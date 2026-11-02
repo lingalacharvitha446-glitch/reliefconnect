@@ -1,45 +1,67 @@
 # 🚨 ReliefConnect – Disaster Relief Coordination System
 
-**Connecting Victims, Volunteers, NGOs, and Authorities for Effective Disaster Response.**
+<p align="center">
+  <strong>Connecting People. Coordinating Relief. Saving Lives.</strong>
+</p>
 
-ReliefConnect is a web-based Disaster Relief Coordination System designed to improve communication and coordination during emergency situations. It provides a centralized platform where disaster victims can request essential assistance, volunteers can accept relief tasks, NGOs can manage available resources, and authorities can monitor relief operations.
+## 📌 About the Project
 
-## 🌟 Key Features
+**ReliefConnect** is a web-based Disaster Relief Coordination System developed to improve communication and coordination during disaster situations.
 
-### 1. Victim Module
-- Register and log in securely.
+The application provides a centralized platform connecting four major users: **Victims, Volunteers, NGOs, and Authorities**.
+
+Victims can request essential assistance, volunteers can accept relief tasks, NGOs can manage available resources, and authorities can monitor and coordinate relief operations.
+
+The main objective is to make disaster relief operations more organized, accessible, and efficient.
+
+## 🎯 Objectives
+
+- Provide a centralized disaster relief coordination platform.
+- Help victims request essential emergency assistance.
+- Connect volunteers with people who need help.
+- Enable NGOs to manage and update available resources.
+- Allow authorities to monitor and coordinate relief activities.
+- Improve communication and transparency during disaster situations.
+
+## ✨ Key Features
+
+### 👤 1. Victim Module
+- User registration and login.
 - Submit disaster relief requests.
-- Request essential resources such as food, medicine, and rescue assistance.
-- Track the status of submitted requests.
-- Receive notifications about request updates.
+- Request food, medicine, rescue and other essential assistance.
+- Track submitted requests.
+- Receive notifications and updates.
 
-### 2. Volunteer Module
-- Register as a volunteer.
+### 🤝 2. Volunteer Module
+- Volunteer registration and login.
 - View available relief requests.
 - Accept and manage assigned tasks.
 - Track task progress.
-- Receive notifications about relief operations.
+- Receive notifications.
 
-### 3. NGO Module
+### 🏢 3. NGO Module
+- NGO registration and login.
 - Manage NGO information.
-- Update available relief resources.
+- Update available resources.
 - View and manage relief requests.
 - Coordinate resource distribution.
 
-### 4. Authority Module
+### 🛡️ 4. Authority Module
 - Monitor disaster relief requests.
 - View registered NGOs and volunteers.
 - Manage and coordinate relief operations.
-- Monitor request statuses and notifications.
+- Monitor request statuses.
+- Receive notifications about relief activities.
 
 ## 🛠️ Technology Stack
 
 | Component | Technology |
 |---|---|
 | Frontend | React.js |
-| Backend | Java – Spring Boot |
+| Backend | Java |
+| Backend Framework | Spring Boot |
 | Database | MySQL |
-| API | REST API |
+| API Communication | REST API |
 | ORM | Spring Data JPA / Hibernate |
 | Build Tool | Maven |
 | Frontend Build Tool | Vite |
@@ -48,19 +70,30 @@ ReliefConnect is a web-based Disaster Relief Coordination System designed to imp
 ## 🏗️ System Architecture
 
 ```text
-          USERS
-            |
-            ▼
-      REACT FRONTEND
-            |
-            ▼
-         REST API
-            |
-            ▼
-     SPRING BOOT BACKEND
-            |
-            ▼
-       MYSQL DATABASE
+                 USERS
+                   |
+       +-----------+-----------+
+       |           |           |
+       v           v           v
+     VICTIMS   VOLUNTEERS     NGOs
+       |           |           |
+       +-----------+-----------+
+                   |
+                   v
+           REACT FRONTEND
+                   |
+                   v
+                REST API
+                   |
+                   v
+          SPRING BOOT BACKEND
+                   |
+                   v
+             MYSQL DATABASE
+                   |
+                   v
+         DATA MANAGEMENT AND
+          RELIEF COORDINATION
 ```
 
 ## 📂 Project Structure
@@ -70,17 +103,25 @@ ReliefConnect/
 │
 ├── frontend/
 │   └── disaster-relief-system/
-│       ├── src/
 │       ├── public/
+│       ├── src/
+│       │   ├── components/
+│       │   ├── pages/
+│       │   ├── assets/
+│       │   └── utils/
 │       ├── package.json
+│       ├── package-lock.json
 │       └── vite.config.js
 │
 ├── disaster-relief-backend/
 │   ├── src/
 │   │   ├── main/
+│   │   │   ├── java/
+│   │   │   └── resources/
 │   │   └── test/
 │   ├── pom.xml
-│   └── mvnw
+│   ├── mvnw
+│   └── mvnw.cmd
 │
 ├── .gitignore
 └── README.md
@@ -90,28 +131,37 @@ ReliefConnect/
 
 ### Prerequisites
 
+Make sure the following software is installed:
+
 - Java JDK
 - Node.js and npm
 - MySQL Server
+- MySQL Workbench (optional)
 - Git
+- Visual Studio Code (recommended)
 
 ### 1. Clone the Repository
 
-```bash
-git clone https://github.com/YOUR-USERNAME/ReliefConnect.git
-```
+Open your terminal and execute:
 
 ```bash
-cd ReliefConnect
+git clone https://github.com/lingalacharvitha446-glitch/reliefconnect.git
 ```
 
-### 2. Configure MySQL
+Navigate into the project directory:
 
-- Start your MySQL server.
-- Create the required project database.
-- Configure the database URL, username, and password using environment variables.
+```bash
+cd reliefconnect
+```
 
-Required backend environment variables:
+### 2. Database Configuration
+
+1. Start your MySQL server.
+2. Open MySQL Workbench.
+3. Create the required project database.
+4. Configure the database connection in the backend.
+
+Set the following environment variables:
 
 ```text
 DB_URL=jdbc:mysql://localhost:3306/your_database_name
@@ -119,21 +169,27 @@ DB_USERNAME=your_mysql_username
 DB_PASSWORD=your_mysql_password
 ```
 
-### 3. Run the Backend
+Replace the example values with your actual local MySQL configuration.
 
-Open a terminal:
+**Note:** Never upload actual database passwords or sensitive credentials to GitHub.
+
+### 3. Run the Backend (Spring Boot)
+
+Open a terminal in VS Code:
 
 ```bash
 cd disaster-relief-backend
 ```
 
-For Windows PowerShell, configure the environment variables in the terminal and execute:
+For Windows:
 
 ```powershell
 .\mvnw.cmd spring-boot:run
 ```
 
-### 4. Run the Frontend
+The Spring Boot backend will start using the configured application port.
+
+### 4. Run the Frontend (React)
 
 Open another terminal:
 
@@ -141,38 +197,58 @@ Open another terminal:
 cd frontend/disaster-relief-system
 ```
 
-Install dependencies:
+Install the required dependencies:
 
 ```bash
 npm install
 ```
 
-Start the development server:
+Start the React development server:
 
 ```bash
 npm run dev
 ```
 
-Open the local URL displayed in the terminal to access the application.
+Open the local URL displayed in your terminal to access the application.
 
 ## 🔐 Security
 
-- Database credentials are configured through environment variables.
+- Database credentials are managed using environment variables.
 - Sensitive configuration files are excluded using `.gitignore`.
-- Authentication and role-based access support the different user modules.
+- Authentication supports different application user roles.
+- Backend and frontend communicate through REST APIs.
 
-## 🎯 Project Objective
+## 🌍 Project Impact
 
-The primary objective of ReliefConnect is to provide an organized and efficient disaster relief coordination platform that helps connect people in need with volunteers, NGOs, and authorities.
+ReliefConnect aims to support disaster management by bringing victims, volunteers, NGOs, and authorities together on a single platform.
 
-By centralizing relief requests, resource management, and communication, the application aims to support faster and more coordinated disaster response.
+It helps organize relief requests, coordinate available resources, and improve communication between different stakeholders during emergency situations.
 
-## 👩‍💻 Developed By
+## 🚀 Future Enhancements
 
-**ReliefConnect Project Team**
+- Real-time disaster alerts and notifications.
+- Live location tracking and interactive maps.
+- AI-based prioritization of emergency requests.
+- Integration with emergency response services.
+- Improved analytics and disaster monitoring dashboards.
 
-Academic Project – Disaster Management Domain
+## 👩‍💻 Project Information
+
+**Project Name:** ReliefConnect
+
+**Domain:** Disaster Management
+
+**Project Type:** Web-Based Application
+
+**Developed By:** ReliefConnect Project Team
+
+**Technologies:** React.js, Java, Spring Boot and MySQL
+
+**GitHub Repository:**  
+https://github.com/lingalacharvitha446-glitch/reliefconnect
 
 ---
 
-⭐ If you find this project interesting, feel free to explore the repository and its features.
+<p align="center">
+  <strong>ReliefConnect – Together Towards Faster Disaster Relief. ❤️</strong>
+</p>
