@@ -1,0 +1,43 @@
+
+# Node modules
+node_modules/
+frontend/node_modules/
+backend/node_modules/
+
+# React build files
+dist/
+build/
+
+# Java / Spring Boot
+target/
+*.class
+*.jar
+*.war
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+application-local.properties
+application-secret.properties
+*.pem
+*.key
+
+# Python cache (if any)
+__pycache__/
+*.pyc
+.venv/
+
+# IDE files
+.vscode/
+.idea/
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
